@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Selamat datang di website Praktikum 6</h1>
+        <h2>Data Mahasiswa</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>NIM</th>
+                    <th>Jenis Kelamin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="mhs : ${userList}">
+                    <td th:text="${mhs.nama}"></td>
+                    <td th:text="${mhs.nim}"></td>
+                    <td th:text="${mhs.jenisKelamin}"></td>
+                </tr>
+                <tr th:if="${userList.isEmpty()}">
+                    <td colspan="3" style="text-align: center;">Data kosong.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="margin-top: 2rem; display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a th:href="@{/input}"><button>Input Mahasiswa</button></a>
+            <a th:href="@{/logout}" class="logout-link">Logout</a>
+        </div>
+    </div>
+</body>
+</html>
